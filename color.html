@@ -1,0 +1,222 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1">
+<title>渐变生成</title>
+<style>
+  @charset "gb2312";
+body {
+	font-size: 18px;
+	font-family: "微软雅黑";
+	font-weight: lighter;
+	color: #444;
+	background-color: #06801a44;
+	margin: 0;
+	padding: 0;
+	word-break:break-all;
+	word-wrap:break-word;
+}
+textarea, input, select {
+	resize: none;
+	outline: none;
+	font-size: 1em;
+	font-family: "微软雅黑";
+	font-weight: lighter;
+}
+.main {
+	max-width: 800px;
+	min-width: 400px;
+	margin: 0 auto;
+}
+.main .path a {
+	text-decoration: none;
+	color: #fff;
+}
+.main .path a:hover {
+	text-decoration: underline;
+	border-bottom: 1px solid #fff;
+}
+.main .content {
+	background-color: #fff;
+	padding: 40px;
+	text-align: justify;
+	text-justify: distribute;
+	border-radius: 30px;
+}
+.main .content .area {
+	max-width: 728px;
+	line-height: 160%;
+	overflow: hidden;
+}
+</style>
+</head>
+<body> 
+      <br>
+    <br>
+    <br>
+    <br>
+<div class="main"> 
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="content" > 
+    <tr>
+      <td valign="top" class="area"><form name=form1 action="" method=post>
+	    <div><textarea id=text1 name=text1 style="border:2px solid #ccc; padding:5px; width:96%; height:100px;" wrap=VIRTUAL>我是彩虹字</textarea></div>
+        <div>选择颜色：　起始颜色<input type=color title=取色板 onclick=this.form.start_color.value=this.value name=start_color> 
+                    　　 终止颜色<input type=color onKeyUp=this.form.end_color.value=this.value title=取色板 name=end_color></div>
+        <div>代码格式：　<label><input type=radio CHECKED value=ubb name=format>转换成UBB代码</label>　　 
+                    <label><input type=radio value=html name=format>转换成HTML代码</label></div>
+        <div align="center" style="margin:5px; "><input id=cur_color type=hidden name=cur_color> 
+		<input onclick="MM_callJS('pv()')" type=button value="= 预　览 =" name=Button> 
+        <input onclick="MM_callJS('gen_onclick()')" type=button value="= 生　成 =" name=Button2> 
+        <input onclick="MM_callJS('reset_form()')" type=button value="= 重　来 =" name=Reset_bt></div>
+        
+        <div id="preview"></div>
+        <div><textarea id=text2 ondblclick=copy_to_cb() onmouseover=this.select() name=text2 style="border:2px solid #ccc; padding:5px; width:96%; height:200px; font-size:14px;" readOnly wrap=VIRTUAL></textarea></div>
+      </form>
+    </tr> 
+  </table> 
+</div> 
+<script>
+  function get_color(tv)
+ {
+    var Hcolor = dlgHelper.ChooseColorDlg(tv).toString(16);
+    with(event.srcElement){
+ 
+        Hcolor = ((Hcolor.length<6)?"000000".substring(0,6-Hcolor.length):"") + Hcolor;
+    }
+    return  Hcolor;
+}
+ 
+function pv(){ //preview
+	if(!document.form1.text1.value){
+		alert('没有文字可以转换！');
+		document.form1.text1.focus();
+	}else{
+		document.getElementById('preview').innerHTML=generate('html',document.form1.text1.value);
+	}
+}
+ 
+function gen_onclick(){
+	if(document.form1.format[0].checked==true){
+		document.form1.text2.value=generate('ubb',document.form1.text1.value);
+	}else{
+		document.form1.text2.value=generate('html',document.form1.text1.value);
+		
+	}
+}
+ 
+function generate(action,str){
+	scolor=document.form1.start_color.value.replace("#","");
+	ecolor=document.form1.end_color.value.replace("#","");
+	r1=HexToNum(scolor.substring(0,2));
+	g1=HexToNum(scolor.substring(2,4));
+	b1=HexToNum(scolor.substring(4,6));
+	r2=HexToNum(ecolor.substring(0,2));
+	g2=HexToNum(ecolor.substring(2,4));
+	b2=HexToNum(ecolor.substring(4,6));
+	r_step=(r1-r2-((r1-r2)%str.length))/str.length;
+	g_step=(g1-g2-((g1-g2)%str.length))/str.length;
+	b_step=(b1-b2-((b1-b2)%str.length))/str.length;
+	if(r_step==0){r_step=3;}
+	if(g_step==0){g_step=3;}
+	if(b_step==0){b_step=3;}
+	var str2='';
+	r_color=r1;
+	g_color=g1;
+	b_color=b1;
+	for(var i=0;i<str.length;i++){
+		cur_str=str.substring(i,i+1);
+		r_color=r_color-r_step;
+		g_color=g_color-g_step;
+		b_color=b_color-b_step;
+		if(r_color>=255||r_color<0){r_color=r1;}
+		if(g_color>=255||g_color<0){g_color=g1;}
+		if(b_color>=255||b_color<0){b_color=b1;}
+		cur_color=NumToHex(r_color)+''+NumToHex(g_color)+''+NumToHex(b_color)
+		if(action=='html'){
+			if(cur_str=='\n'){
+				str2+='<br>';
+			}else{
+				str2+='<font color=#' +cur_color+ '>' + cur_str + '</font>';
+			}
+		}else{
+			str2+='[color=#' +cur_color+ ']'+cur_str+'[/color]';
+		}	
+	}
+	return str2;
+}
+ 
+function reset_form(){
+	document.form1.reset();
+	//document.all.td_start.bgColor='#'+document.form1.start_color.value;
+	//document.all.td_end.bgColor='#'+document.form1.end_color.value;
+	document.all.preview.innerHTML='';
+}
+ 
+function copy_to_cb() {
+	if(document.form1.text2.value){
+		document.form1.text2.focus();
+		document.form1.text2.select();
+		therange=document.form1.text2.createTextRange();
+		therange.execCommand("Copy");
+		alert("代码已经拷贝到剪贴板！\n\n请按Ctrl+V将其粘贴到适当的位置。");
+	}
+}
+ 
+window.history.replaceState(null, null, window.location.href);
+ 
+function MakeNum(str) {
+	if((str >= 0) && (str <= 9)){
+		return str;
+	}
+	switch(str.toUpperCase()) {
+	case "A": return 10;
+	case "B": return 11;
+	case "C": return 12;
+	case "D": return 13;
+	case "E": return 14;
+	case "F": return 15;
+	}
+}
+ 
+function HexToNum(hex) {
+	tens = MakeNum(hex.substring(0,1));
+	ones = 0;
+	ones=MakeNum(hex.substring(1,2));
+	num = (tens * 16) + (ones * 1);
+	return num;
+}
+ 
+function NumToHex(strNum) {
+	var base,rem,baseS,remS;
+	base = strNum / 16;
+	rem = strNum % 16;
+	base = base - (rem / 16);
+	baseS = MakeHex(base);
+	remS = MakeHex(rem);
+	hex = baseS + '' + remS;
+	return hex;
+}
+ 
+function MakeHex(x) {
+	if((x >= 0) && (x <= 9)){
+		return x;
+	}else{
+		switch(x) {
+		case 10: return "A"; 
+		case 11: return "B";  
+		case 12: return "C";  
+		case 13: return "D";  
+		case 14: return "E";  
+		case 15: return "F";  
+		  }
+	}
+}
+ 
+ 
+function MM_callJS(jsStr) { //v2.0
+  return eval(jsStr)
+}
+</script>
+</body>
+</html>

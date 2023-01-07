@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>卡片模块</title>
+</head>
+<body>
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500;600&display=swap");
+    img {
+        border-radius: 12px;
+  height: 214px;
+  object-fit: cover;
+  width: 100%;
+}
+/* 给具有 tag class 的 div 元素添加样式 */
+.tag {
+  padding: 4px 8px;
+  border: 1px solid #e5eaed;
+
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #788697;
+}
+
+/* 给具有 name class 的 div 元素添加样式 */
+.name {
+  font-size: 24px;
+  font-weight: 600;
+
+  margin-top: 16px;
+}
+/* 当 button 获得焦点，或者鼠标悬停在上面时，button 的样式是这样的*/
+button:focus,
+button:hover {
+  background-color: #0077ff;
+  color: #e0efff;
+}
+
+/* 给 p 元素添加样式 */
+p {
+  font-size: 14px;
+  color: #7f8c9b;
+  line-height: 150%;
+}
+
+/* 给 button 元素添加样式 */
+button {
+  border: none;
+  padding: 12px 24px;
+  border-radius: 50px;
+
+  font-weight: 600;
+  color: #0077ff;
+  background-color: #e0efff;
+
+  /* Button 默认是行内元素，display 属性值为 block，margin 值为 0 auto; */
+  margin: 0 auto;
+  display: block;
+
+  /* Button 是一个可点击的元素，因此需要有一个 pointer cursor */
+  cursor: pointer;
+}
+
+.card__details {
+  /* 在细节内容周围添加空白区域 */
+  padding: 16px 8px 8px 8px;
+}
+
+.card {
+  /* 修改背景色 */
+  background-color: white;
+
+  /* 增加边框 */
+  border: 1px solid #bacdd8;
+
+  /* 在边框和内容之间添加空白区域 */
+  padding: 8px;
+
+  border-radius: 12px;
+}
+#container {
+  max-width: 300px;
+
+  /* 在水平轴线上居中放置 container */
+  margin: 0 auto;
+
+  /* 在 container 上方添加空白区域（视窗高度的 20% 位置） */
+  margin-top: 20vh;
+}
+
+    body {
+  background-color: #eaeff1;
+  font-family: "Raleway", sans-serif;
+}
+</style>
+    <!-- id 为 container 的 div，包含卡片 -->
+    <div id="container">
+  
+      <!-- 具有 card class 的 div  -->
+      <div class="card">
+        <img src="https://cloud.shuia.tk/1657709469775.jpg" alt="Lago di Braies">
+  
+        <!-- 具有 card__details class 的 div，包含卡片的细节 -->
+        <div class="card__details">
+  
+          <!-- 具有 tag class 的 Span 标签 -->
+          <span class="tag">Nature</span>
+  
+          <span class="tag">Lake</span>
+  
+          <!-- 具有 name class 的 div，给卡片命名 -->
+          <div class="name">Lago di Braies</div>
+  
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consectetur sodales morbi dignissim sed diam
+            pharetra
+            vitae ipsum odio.</p>
+  
+          <button>Read more</button>
+        </div>
+  
+      </div>
+    </div>
+  
+  </body>
+</html>

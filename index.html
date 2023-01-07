@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MOE CSS</title>
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
+  <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ 
+</head>
+<!--引入字体，全局字体使用-->
+<link rel="stylesheet" href="https://npm.elemecdn.com/lxgw-wenkai-webfont@1.1.0/lxgwwenkai-regular.css" />
+
+<!-- Font6，自定义底部使用和看板娘使用的图标和字体文件-->
+<link type='text/css' rel="stylesheet" href="https://npm.elemecdn.com/font6pro@6.0.1/css/fontawesome.min.css" media='all'>
+<link href="https://npm.elemecdn.com/font6pro@6.0.1/css/all.min.css" rel="stylesheet">
+
+<style>
+/*主列表透明*/
+.obj-box.hope-stack.hope-c-dhzjXW.hope-c-PJLV.hope-c-PJLV-igScBhH-css {
+background-color: rgba(255, 255, 255, 0.5) !important;
+}
+/*readme透明*/
+.hope-c-PJLV.hope-c-PJLV-ikSuVsl-css{
+background-color: rgba(255, 255, 255, 0.5) !important;
+}
+/*顶部右上角切换按钮透明*/
+.hope-c-ivMHWx-hZistB-cv.hope-icon-button{
+background-color: rgba(255, 255, 255, 0.3) !important;
+}
+/*右下角侧边栏按钮透明*/
+.hope-c-PJLV-ijgzmFG-css{
+background-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+
+/*白天模式代码块透明*/
+.hope-ui-light pre{
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+/*夜间模式代码块透明*/
+.hope-ui-dark pre {
+    background-color: rgba(255, 255, 255, 0) !important;
+}
+
+/*底部CSS，.APP .tanle这三个一起的*/
+dibu {
+    border-top: 0px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+.App {
+    min-height: 85vh;
+}
+.table {
+    margin: auto;
+}
+
+
+/*全局字体*/
+*{font-family:LXGW WenKai}
+*{font-weight:bold}
+body {font-family: LXGW WenKai;}
+
+
+/*渐变背景CSS*/
+#canvas-basic {
+    position: fixed;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -999;
+}
+
+</style>
+
+<!--看板娘 -自定义大小，隐藏对话框和对话框高度-->
+<style type="text/css">
+    #waifu #live2d {
+        height: 350px!important;
+        width: 350px!important;
+    }
+    #waifu-tips {
+        top: -60px;
+        /*display:none !important;隐藏对话框*/
+    }
+</style>
+<!--看板娘加载指定模型-->
+<script>
+    localStorage.setItem('modelId', '7');
+    localStorage.setItem('modelTexturesId', '3');
+</script>
+
+<!--自己选左右-->
+<script src="https://api.itggg.cn/live2dnew/left/index.js"></script>
+<script src="https://api.itggg.cn/live2dnew/right/index.js"></script>
+ 
+<!--以下四个两个主用两个备用的,选一条使用即可-->
+<!--自己选左右-->
+<script src="https://api.itggg.cn/live2dnew/left/index.js"></script>
+
+
+<!--备用的，自己选左右-->
+<script src="https://luluossfile.lulufind.com/work/teacher_u20221017ce7b5991_1666420843832_19934968_file.js"></script>
+
+<body>
+   <center> <h1 style="padding: 10px;">
+    <font color=#0842F8>M</font><font color=#0E38F9>O</font><font color=#142EFA>E</font><font color=#1A24FB> </font><font color=#201AFC>C</font><font color=#2610FD>S</font><font color=#2C06FE>S</font>
+</h1>
+<hr width="25%" noshade="noshade" />
+
+<div class="card">
+<h3 style="padding-left: 10px;">MOE网站模块,自用搭建html模块</h3>
+<a class="html" target="_blank" href="login.html">login.html</a><br>
+<a class="html" target="_blank" href="ppt.html">ppt.html</a><br>
+<a class="html" target="_blank" href="card.html">card.html</a><br>
+<a class="html" target="_blank" href="img.html">img.html</a><br>
+<a class="html" target="_blank" href="404.html">404.html</a><br>
+<a class="html" target="_blank" href="color.html">color.html</a><br>
+<a class="html" target="_blank" href="footer.html">footer.html</a><br>
+</div>
+</center>
+
+<style>
+.card {
+  width: 400px;
+  height: auto;
+  padding: 2rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, .7);
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
+}
+
+.card-title {
+  margin-top: 0;
+  margin-bottom: .5rem;
+  font-size: 1.2rem;
+}
+
+p, a {
+  font-size: 1rem;
+}
+
+a {
+  color: #4d4ae8;
+  text-decoration: none;
+}
+    a.html
+    {
+        font-size: 20px;
+    }
+    .footer{
+        width: 100%;
+position: absolute;
+bottom: 0
+}
+</style>
+<div class="footer">
+    <hr width="100%" noshade="noshade" />
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <h3>About Us</h3>
+                <p>MOE网站模块是一种简单易用的网站构建模块，它基于Bootstrap 3.3.7框架，提供了一系列的网站模块，可以帮助用户快速构建和维护网站。</p>
+            </div>
+            <div class="col-md-3">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><i class="fa fa-map-marker"></i> 123 Street, City, Country</li>
+                    <li><i class="fa fa-phone"></i> +123 456 789</li>
+                    <li><i class="fa fa-mailbox"></i> <a href="mailto:hllqk@outlook.com">hllqk@outlook.com</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h3>Follow Us</h3>
+                <ul class="social-list">
+                    <li><a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                    <li>  <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                    <li>  <a href="https://www.twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h3>Friend Links</h3>   
+                    <a target="_blank" href="https://iadx.eu.org/">https://iadx.eu.org/</a>
+                    <a target="_blank" href="https://www.freecodecamp.org/chinese/news/author/humilitas/">https://www.freecodecamp.org/chinese/news/author/humilitas/</a>
+                    <a target="_blank" href="https://www.netlify.com/">https://www.netlify.com/</a>
+                    <a target="_blank" href="http://cloud.shuia.tk/">https://www.netlify.com/</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--延迟加载-->
+<!--如果要写自定义内容建议都加到这个延迟加载的范围内-->
+<!--延迟加载配套使用JS-->
+<script>
+    let interval = setInterval(() => {
+        if (document.querySelector(".footer")) {
+            document.querySelector("#customize").style.display = "";
+            clearInterval(interval);
+        }
+    }, 200);
+</script>
+<div id="customize" style="display: none;">
+    <div>
+        <br />
+        <center class="dibu">
+            <div style=" line-height: 20px;font-size: 9pt;font-weight: bold;">
+                <span>
+                    "
+                    <span style="color: rgb(13, 109, 252); font-weight: bold;" id="hitokoto">
+                        <a href="#" id="hitokoto_text">
+                            "人生最大的遗憾,就是在最无能为力的时候遇到一个想要保护一生的人."
+                        </a>
+                    </span> "
+                </span>
+                <p style="margin-left: 10rem;font-size: 8pt;">
+
+                </p>
+            </div>
+                <br />
+            </div>
+        </center>
+        <br />
+        <br />
+    </div>
+    <!--一言API-->
+    <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
+<!--延迟加载范围到这里结束-->
+</div>
+<!-- 渐变背景初始化,如果要使用渐变背景把下面的那一行注释去掉即可-->
+<!-- 下面的几行都是渐变的一套,自定义头部内还有一个关联的自定义CSS -->
+<canvas id="canvas-basic"></canvas>
+<script src="https://npm.elemecdn.com/granim@2.0.0/dist/granim.min.js"></script>
+<script>
+var granimInstance = new Granim({
+    element: '#canvas-basic',
+    direction: 'left-right',
+    isPausedWhenNotInView: true,
+    states : {
+        "default-state": {
+            gradients: [
+                ['#a18cd1', '#fbc2eb'],
+                 ['#fff1eb', '#ace0f9'],
+                 ['#d4fc79', '#96e6a1'],
+                 ['#a1c4fd', '#c2e9fb'],
+                 ['#a8edea', '#fed6e3'],
+                 ['#9890e3', '#b1f4cf'],
+                 ['#a1c4fd', '#c2e9fb'],
+                 ['#fff1eb', '#ace0f9']
+           
+            ]
+        }
+    }
+});
+</script>
+</body>
+</html>
